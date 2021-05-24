@@ -9,6 +9,7 @@ TagManager:
   - Enemy3
   - Enemy0
   - Enemy1
+  - Barricade
   layers:
   - Default
   - TransparentFX

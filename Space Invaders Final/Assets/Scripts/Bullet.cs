@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))] //technique for making sure there isn't a null reference during runtime if you are going to use get component
 public class Bullet : MonoBehaviour
@@ -13,6 +14,9 @@ public class Bullet : MonoBehaviour
     public int hiscore;
     public Text scoretext;
     public Text hiscoretext;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI hiscoreText;
+    public AudioSource shotSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,40 +27,33 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     private void Fire()
     {
+        shotSound.Play();
       myRigidbody2D.velocity = Vector2.up * speed; 
       Debug.Log("Wwweeeeee");
     }
-    /*
+    
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy1")
         {
-            score = score + 10;
-            hiscore += score;
-            scoretext.text = score.ToString();
-            hiscoretext.text = hiscore.ToString();
+            Score playerscore = GetComponent<Score>();
+            playerscore.score += 10;
         }
         if (collision.gameObject.tag == "Enemy2")
         {
-            score = score + 30;
-            hiscore += score;
-            scoretext.text = score.ToString();
-            hiscoretext.text = hiscore.ToString();
+            Score playerscore = GetComponent<Score>();
+            playerscore.score += 20;
         }
         if (collision.gameObject.tag == "Enemy3")
         {
-            score = score + 50;
-            hiscore += score;
-            scoretext.text = score.ToString();
-            hiscoretext.text = hiscore.ToString();
+            Score playerscore = GetComponent<Score>();
+            playerscore.score += 50;
         }
         if (collision.gameObject.tag == "Enemy4")
         {
-            score = score + 100;
-            hiscore += score;
-            scoretext.text = score.ToString();
-            hiscoretext.text = hiscore.ToString();
+            Score playerscore = GetComponent<Score>();
+            playerscore.score += 100;
         }
     }
-    */
+    
 }
